@@ -43,10 +43,8 @@ final class ValueObjectTransformer implements DataTransformerInterface
 
     /**
      * @param object|null $value
-     *
-     * @return array<string,bool|int|string|null>|bool|int|string|null
      */
-    public function transform(mixed $value): array|bool|int|string|null
+    public function transform(mixed $value): mixed
     {
         if (null === $value) {
             return null;
@@ -90,7 +88,7 @@ final class ValueObjectTransformer implements DataTransformerInterface
         }
     }
 
-    private function getPropertyValue(FormBuilderInterface $form, object $object): bool|int|string|null
+    private function getPropertyValue(FormBuilderInterface $form, object $object): mixed
     {
         if (null !== $form->getPropertyPath()) {
             /* @phpstan-ignore-next-line */
